@@ -7,16 +7,10 @@
  * Time: 上午10:55:28
  */
 //有了前面类，就可以在ftp进行引用了。使用ssl时，请注意进行防火墙passive 端口范围的nat配置。
-defined('DEBUG_ON') or define('DEBUG_ON', false);
-//主目录
-defined('BASE_PATH') or define('BASE_PATH', __DIR__);
-require_once BASE_PATH.'/inc/User.php';
-require_once BASE_PATH.'/inc/ShareMemory.php';
-require_once BASE_PATH.'/web/CWebServer.php';
-require_once BASE_PATH.'/inc/CSmtp.php';
+
 class CFtpServer{
     //软件版本
-    const VERSION = '2.0';
+    const VERSION = '1.1';
     const EOF = "\r\n";
     public static $software ="FTP-Server";
     private static $server_mode = SWOOLE_PROCESS;
@@ -24,16 +18,16 @@ class CFtpServer{
     private static $log_file=BASE_PATH.'/logs/log';
     //待写入文件的日志队列（缓冲区）
     private $queue = array();
-    private $pasv_port_range = array(55000,60000);
-    public $host = '0.0.0.0';
-    public $port = 21;
+    private $pasv_port_range = array(PASV_PORT_MIN,PASV_PORT_MAX);
+    public $host = LOCALHOST;
+    public $port = FTP_PORT;
     public $setting = array();
     //最大连接数
-    public $max_connection = 50;
+    public $max_connection = MAX_CONNECTION;
     //web管理端口
-    public $manager_port = 8880;
+    public $manager_port = HTTP_PORT;
     //tls
-    public $ftps_port = 990;
+    public $ftps_port =FTPS_PORT;
     /**
      * @var swoole_server
      */
@@ -108,14 +102,14 @@ class CFtpServer{
     /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
      + 方法
      +++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-    public function __construct($host,$port){
+    public function __construct(){
         $this->user = new User();
         $this->shm = new ShareMemory();
         $this->shm->write(array());
         $flag = SWOOLE_SOCK_TCP;
+        $host=$this->host;
+        $port=$this->port;
         $this->server = new swoole_server($host,$port,self::$server_mode,$flag);
-        $this->host = $host;
-        $this->port = $port;
         $this->setting = array(
             'backlog' => 128,
             'dispatch_mode' => 2,

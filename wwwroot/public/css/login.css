@@ -1,0 +1,130 @@
+body{
+    min-height: 100vh;
+/*    background-size: cover;*/
+	background: url(../img/background.jpg) no-repeat;
+	filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+   -moz-background-size:100% 100%;
+   background-size:100% 100%;
+}
+.head{
+	position: relative;
+	height: 60px;
+	width: 100%;
+	background: #FFFFFF;
+	margin: 0 0;
+	padding: 0 0;
+}
+.head img{
+	vertical-align:middle; 
+	margin: 10px 10px 10px 0;
+}
+.head img,ul{
+	float: left;
+}
+.head ul{
+	height: 60px;
+	color: #3f3f3f;
+	font-family: "微软雅黑";
+	font-size: 13px;
+	line-height: 60px;
+}
+.left{
+	float: left;
+	height: 60px;
+}
+.right{
+	float: right;
+	height: 60px;
+}
+/*.head ul li{
+	float: left;
+	margin-left: 30px;
+	height: 60px;
+	line-height: 60px;
+}*/
+/*.head ul li a{
+	height: 60px;
+}*/
+#navbar>li>a{
+	line-height: 30px;
+	height: 60px;
+}
+.head h1{
+	margin: 0 0;
+	padding: 0 0;
+	position: absolute;
+	top:0;
+	left: 50%;
+	font: normal 18px/60px "微软雅黑" ;
+}
+.head .right span{
+	font: 13px/30px"微软雅黑";
+	float:left;
+	margin: 15px 5px;
+	display: table-cell;
+    vertical-align: middle;
+    text-align: center;         
+	width: 84px;
+	height: 30px;
+	background: #000000;
+	border-radius: 20px;
+	border:1px solid #3f3f3f;
+}
+.head .right span.span1{
+	color: #F0F0F0;
+}
+.head .right span.span2{
+	background: #FFFFFF;
+	color: #ooo;
+}
+.head .right span img{
+	float: left;
+}
+.dropdown-menu li,a{
+	background: #ffffff;
+}
+.login{
+	margin: 50px auto;
+	width: 480px;
+	height: 382px;
+	background: #FFFFFF;
+	border-radius: 10px;
+}
+.login h2{
+	margin: 30px 0;
+	text-align: center;
+}
+.check{
+	margin: 0 auto;
+	width: 402px;
+	height: 40px;
+	line-height: 40px;
+}
+.main_input,input.input{
+		margin: 0;
+	padding: 0;
+	margin: 0 auto;
+	width: 402px;
+	height: 52px;
+}
+.main_input{
+	margin-top: 18px;
+	font: normal 16px/52px "微软雅黑";
+	color: #c9c9c9;
+}
+.login .register{
+	text-align: center;
+}
+.login .submit{
+	display:block;
+	margin: 0 auto;
+	width: 402px;
+	height: 52px;
+	border-radius: 30px;
+	background: #999da2;
+	color:#FFFFFF;
+}
+.register{
+	margin-top: 10px;
+}
+

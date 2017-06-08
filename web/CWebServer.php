@@ -29,7 +29,7 @@ class CWebServer{
     }
     public function __construct($config = array()){
         $this->config = array(
-            'wwwroot' => BASE_PATH.'/wwwroot/',
+            'wwwroot' => BASE_PATH.'/wwwroot/public/',
             'index' => 'index.php',
             'path_deny' => array('/protected/'),
         );
@@ -320,25 +320,26 @@ class CWebServer{
                 $_SERVER['REMOTE_ADDR'] = $request['remote_ip'];
                 $_SERVER['REQUEST_URI'] = $request['head']['uri'];
                 //进行http auth
-                if(isset($_GET['c']) && strtolower($_GET['c']) != 'site'){
-                    if(isset($request['head']['Authorization'])){
-                        $user = new User();
-                        if($user->checkUserBasicAuth($request['head']['Authorization'])){
-                            $response['head']['Status'] = self::$HTTP_HEADERS[200];
-                            goto process;
-                        }
-                    }
-                    $response['head']['Status'] = self::$HTTP_HEADERS[401];
-                    $response['head']['WWW-Authenticate'] = 'Basic realm="Real-Data-FTP"';
-                    $_GET['c'] = 'Site';
-                    $_GET['a'] = 'Unauthorized';
-                }
+//                 if(isset($_GET['c']) && strtolower($_GET['c']) != 'site'){
+//                     if(isset($request['head']['Authorization'])){
+//                         $user = new User();
+//                         if($user->checkUserBasicAuth($request['head']['Authorization'])){
+//                             $response['head']['Status'] = self::$HTTP_HEADERS[200];
+//                             goto process;
+//                         }
+//                     }
+//                     $response['head']['Status'] = self::$HTTP_HEADERS[401];
+//                     $response['head']['WWW-Authenticate'] = 'Basic realm="Real-Data-FTP"';
+//                     $_GET['c'] = 'Site';
+//                     $_GET['a'] = 'Unauthorized';
+//                 }
                 process:
                 ob_start();
                 try{
                     include $path;
                     $response['body'] = ob_get_contents();
                     $response['head']['Content-Type'] = self::$content_type;
+                    $response['head']['Charset'] = 'utf-8';
                 }catch (Exception $e){
                     $response = $this->httpError(500, $e->getMessage());
                 }

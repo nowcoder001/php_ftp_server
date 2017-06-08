@@ -43,3 +43,22 @@
 * )
 * )
 */
+
+ //http服务器类端口
+ define('HTTP_PORT', 8880);
+ //FTP服务器端口
+ define('FTP_PORT', 21);
+ //最大连接数
+ define('MAX_CONNECTION', 50);
+ //TLS
+ define('FTPS_PORT',990);
+ //ftp被动端口
+ define('PASV_PORT_MIN', '55000');
+ define('PASV_PORT_MAX', '60000');
+ //监听地址
+ define('LOCALHOST', '0.0.0.0');
+ require_once BASE_PATH.'/inc/User.php';
+ require_once BASE_PATH.'/inc/ShareMemory.php';
+ require_once BASE_PATH.'/web/CWebServer.php';
+ require_once BASE_PATH.'/inc/CSmtp.php';
+ require_once BASE_PATH.'/CFtpServer.php';

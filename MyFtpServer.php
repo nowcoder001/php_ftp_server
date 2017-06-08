@@ -7,10 +7,12 @@
  * Time: 上午10:55:40
  */
 //请使用sudo php MyFtpServer.php 启动，swoole仅支持php_cli
-include_once 'CFtpServer.php';
-$host='0.0.0.0';
-$port='21';
-$ftp=new CFtpServer($host, $port);
+
+defined('DEBUG_ON') or define('DEBUG_ON', false);
+//主目录
+defined('BASE_PATH') or define('BASE_PATH', __DIR__);
+include  BASE_PATH.'/conf/config.php';
+$ftp=new CFtpServer();
 $crt=BASE_PATH.'/ssl/ftp.scjtqs.top.crt';
 $key=BASE_PATH.'/ssl/ftp.scjtqs.top.key';
 $ftp->set_ssl($crt, $key);
