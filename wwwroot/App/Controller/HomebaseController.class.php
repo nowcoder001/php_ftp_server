@@ -8,6 +8,6 @@
  */
 class HomebaseController{
     public function display($file='index'){
-        include_once __ROOT__.'/../App/View/'.$file.'.php';
+        include_once __ROOT__.'/../App/view/'.$file.'.php';
     }
 }
