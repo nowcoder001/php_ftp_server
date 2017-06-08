@@ -1,6 +1,6 @@
 <?php
 namespace Vendor;
-use App\Controller;
+use App\Controller\HomebaseController;
 /**
  * Created by Zend Studio
  * User: scjtqs
