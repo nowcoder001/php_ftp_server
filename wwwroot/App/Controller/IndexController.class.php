@@ -8,7 +8,7 @@
  */
 class IndexController extends HomebaseController{
     public function Index(){
-        $this->display('list');
+        $this->display('login');
     }
     public function Login(){
         $this->display('login');
