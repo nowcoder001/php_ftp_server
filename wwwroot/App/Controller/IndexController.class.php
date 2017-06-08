@@ -1,5 +1,4 @@
 <?php
-namespace App\Controller;
 /**
  * Created by Zend Studio
  * User: scjtqs
