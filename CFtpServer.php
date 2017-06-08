@@ -113,6 +113,7 @@ class CFtpServer{
         $this->setting = array(
             'backlog' => 128,
             'dispatch_mode' => 2,
+            "worker_num"=>100,
         );
     }
     /***
