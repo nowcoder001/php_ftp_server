@@ -1,4 +1,6 @@
 <?php
+namespace Vendor;
+use App\Controller;
 /**
  * Created by Zend Studio
  * User: scjtqs

@@ -1,4 +1,6 @@
 <?php
+namespace Scjtqs;
+use Vendor\Autoload;
 require __DIR__.'/../vendor/autoload.php';
 define('HOME', 'Index');
 define('__ROOT__', __DIR__);
