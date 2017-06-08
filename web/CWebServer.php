@@ -28,7 +28,7 @@ class CWebServer{
     }
     public function __construct($config = array()){
         $this->config = array(
-            'wwwroot' => __DIR__.'/wwwroot/',
+            'wwwroot' => BASE_PATH.'/wwwroot/',
             'index' => 'index.php',
             'path_deny' => array('/protected/'),
         );
@@ -382,10 +382,11 @@ class CWebServer{
 <title>FTP后台管理 </title>
 </head>
 <body>
+<h1>{$code}</h1>
 <p>{$content}</p>
 <div style="text-align:center">
 <hr>
-{$version} Copyright © 2015 by <a target='_new' href='http://www.realdatamed.com'>Real Data</a> All Rights Reserved.
+{$version} Copyright © 2017 by <a target='_new' href='http://jose.scjtqs.cn'>莫名居</a> 维护支持.
 </div>
 </body>
 </html>
