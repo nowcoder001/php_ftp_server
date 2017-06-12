@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>添加用户</title>
+		<!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-fixed-top.css" rel="stylesheet">
+    	<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+<script src="https://use.fontawesome.com/7ef1787acb.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+    	.container .main{
+    		margin: 0 auto;
+    		min-width: 200px;
+    		max-width: 500px;
+    	}
+    	.container .main input{
+    		width: 200px;
+    	}
+    </style>
+	</head>
+	<body>
+		
+		<div class="container">
+			<h1 align="center">编辑用户</h1>
+			<div class="main">
+			<form class="form-horizontal js-ajax-form" action="do_editor.php<?php echo $_GET['token']?'?token='.urlencode($_GET['token']):''; ?>" method="post">
+				<label>用户名</label>
+				<div>
+				<input type="text" name="user" required="required" value="<?php echo $_GET['user']; ?>"/>
+				</div>
+				<label>密码</label>
+				<div>
+				<input type="password" name="pass" placeholder="不修改无需填写"/>
+				</div>
+				<label>分组</label>
+				<div>
+				<select name="group" class="group">
+					<option >无</option>
+					<?php foreach($groupList as $k=>$v){
+						echo "<option>$v</option>";
+					} ?>
+				</select>
+				</div>
+				<label>主目录</label>
+				<div>
+				<input type="text" name="home" required="required" value="<?php echo $userinfo['home']; ?>"/>
+				</div>
+				<div class="allowFolder">
+				<label>允许操作的子目录</label>
+				<?php foreach($userinfo['folder'] as $k=>$v){ $i=0;$i++;?>
+				<div>
+				<input type="text" name="folder[<?php echo $k; ?>][path]" required="required" value="<?php echo $v['path']; ?>"/>
+				<input type="text" name="folder[<?php echo $k; ?>][access]" required="required" value="<?php echo $v['access']; ?>"/>权限
+				</div>
+				<?php } ?>
+				</div>
+				<input type="button" class="btn btn-default" value="添加一行" onclick="addOne(this)"/><br />
+				<label>过期时间</label>
+				<div class="input-append date" id="datetimepicker" data-date="2020-02-02" data-date-format="yyyy-dd-mm">
+				<input type="time" name="expired" readonly="readonly" required="required" value="<?php echo $userinfo['expired']; ?>"/>
+				<span class="add-on"><i class="icon-th"></i></span>
+				</div>
+				<div>
+					<button class="btn btn-default">提交</button> <a href="index.php?token=<?php echo $_GET['token']; ?>" class="btn btn-default">返回</a>
+				</div>
+			</form>
+			</div>
+		</div>
+		<div class="container">
+			<div class="main">
+			<strong>文件夹和文件的权限说明：</strong>
+			<p>总共10位，例如：RWAND-----  或 RWANDLCNDI</p>
+<p>* 文件权限 <br>
+* R读 : 允许用户读取（即下载）文件。该权限不允许用户列出目录内容，执行该操作需要列表权限。 <br>
+* W写: 允许用户写入（即上传）文件。该权限不允许用户修改现有的文件，执行该操作需要追加权限。<br>
+* A追加: 允许用户向现有文件中追加数据。该权限通常用于使用户能够对部分上传的文件进行续传。 <br>
+* N重命名: 允许用户重命名现有的文件。<br>
+* D删除: 允许用户删除文件。 <br>
+* <br>
+* 目录权限 <br>
+* L列表: 允许用户列出目录中包含的文件。<br>
+* C创建: 允许用户在目录中新建子目录。 <br>
+* N重命名: 允许用户在目录中重命名现有子目录。<br>
+* D删除: 允许用户在目录中删除现有子目录。注意： 如果目录包含文件，用户要删除目录还需要具有删除文件权限。<br>
+* <br>
+* 子目录权限<br>
+* I继承: 允许所有子目录继承其父目录具有的相同权限。继承权限适用于大多数情况，但是如果访问必须受限于子文件夹，例如实施强制访问控制（Mandatory Access Control）时，则取消继承并为文件夹逐一授予权限。<br>
+* <br>
+</p>
+			</div>
+		</div>
+	</body>
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/locales/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"  charset="UTF-8"></script>
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+    	$('#datetimepicker').datetimepicker({
+  language: 'zh-CN',//显示中文
+  format: 'yyyy-mm-dd',//显示格式
+  minView: "month",//设置只显示到月份
+  initialDate: new Date(),//初始化当前日期
+  autoclose: true,//选中自动关闭
+  todayBtn: true//显示今日按钮
+    	});
+    var group="<?php echo $userinfo['group']; ?>";
+    	$(".group").val(group);
+    	var $i="<?php echo $i; ?>";
+    	function addOne(obj){
+    		var str="<div><input type='text' name='folder["+$i+"][path]' required='required' /> <input type='text' name='folder["+$i+"][access]' required='required'/>权限 <a href='javascript:void();' class='btn btn-default' onclick='delOne(this)'>删除</a></div>";
+    		$(".allowFolder").append(str);
+    		$i++;
+    	}
+    	function delOne(obj){
+    		var del=$(obj).parent('div');
+    		del.remove();
+    	}
+    
+    </script>
+
+</html>
