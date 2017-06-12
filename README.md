@@ -14,12 +14,12 @@
 >`pecl install swoole`</br>  
 ></br>  
 >2、源码安装</br>  
->`sudo apt-get install php5-dev  
->git clone https://github.com/swoole/swoole-src.git  
->cd swoole-src  
->phpize  
->./configure  
->make && make install`</br>  
+>`sudo apt-get install php5-dev `
+>`git clone https://github.com/swoole/swoole-src.git  `
+>`cd swoole-src  `
+>`phpize  `
+>`./configure  `
+>`make && make install`</br>  
 ></br>  
 >使用说明</br>  
 >在命令行，输入 php index.php </br>  
