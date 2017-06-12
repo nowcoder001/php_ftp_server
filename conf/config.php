@@ -57,6 +57,7 @@
  define('PASV_PORT_MAX', '60000');
  //监听地址
  define('LOCALHOST', '0.0.0.0');
+ require_once BASE_PATH.'/conf/common.php';
  require_once BASE_PATH.'/inc/User.php';
  require_once BASE_PATH.'/inc/ShareMemory.php';
  require_once BASE_PATH.'/web/CWebServer.php';

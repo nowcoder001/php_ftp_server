@@ -16,4 +16,16 @@ $pass='123456';
 $home=BASE_PATH.'/test';
 $expired='2018-5-5';
 $usr->addUser($user, $pass, $home, $expired);
+$profile=array('group'=>'admin',
+    'folder'=>array(
+                array('path'=>$home.'/www','access'=>'RWANDLCNDI')
+            ),
+    'ip'=>array(
+                'allow'=>array('0.0.0.0'),
+                'deny'=>array()
+            )
+);
+$usr->setUserProfile($user, $profile);
+$usr->addGroup('admin', $home);
+$usr->addGroup('user',$home);
 $usr->save();

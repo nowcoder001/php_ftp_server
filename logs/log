@@ -18,3 +18,10 @@
 2017-06-03 08:17:45	[warn]	User scjtqs has login successfully! IP: 127.0.0.1
 2017-06-03 08:18:36	[warn]	User scjtqs has login successfully! IP: 127.0.0.1
 2017-06-03 08:19:18	[warn]	User scjtqs has login successfully! IP: 127.0.0.1
+2017-06-09 09:52:58	[warn]	User scjtqs has login successfully! IP: 127.0.0.1
+2017-06-09 09:53:48	[info]	scjtqs	PUT: /Library/WebServer/Documents/ftp_server/test/www/aaa
+2017-06-09 09:53:53	[warn]	scjtqs	DEL: /Library/WebServer/Documents/ftp_server/test/www/aaa
+2017-06-09 09:54:23	[warn]	User scjtqs has login successfully! IP: 127.0.0.1
+2017-06-12 06:31:34	[warn]	User scjtqs has login successfully! IP: 127.0.0.1
+2017-06-12 06:31:39	[info]	scjtqs	MKDIR: /Library/WebServer/Documents/ftp_server/test/创建目录/
+2017-06-12 06:31:44	[warn]	scjtqs	RMDIR: /Library/WebServer/Documents/ftp_server/test/创建目录/

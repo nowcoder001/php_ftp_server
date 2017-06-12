@@ -21,7 +21,6 @@ class CWebServer{
     const ST_FINISH = 1; //完成，进入处理流程
     const ST_WAIT = 2; //等待数据
     const ST_ERROR = 3; //错误，丢弃此包
-    static  $content_type='text/html';
     private $requsts = array();
     private $config = array();
     public function log($msg,$level = 'debug'){
@@ -33,6 +32,7 @@ class CWebServer{
             'index' => 'index.php',
             'path_deny' => array('/protected/'),
         );
+        
     }
     public function onReceive($serv,$fd,$data){
         $ret = $this->checkData($fd, $data);
@@ -338,8 +338,8 @@ class CWebServer{
                 try{
                     include $path;
                     $response['body'] = ob_get_contents();
-                    $response['head']['Content-Type'] = self::$content_type;
-                    $response['head']['Charset'] = 'utf-8';
+                    //$response['head']['Content-Type'] = self::$content_type;
+                    //$response['head']['Charset'] = 'utf-8';
                 }catch (Exception $e){
                     $response = $this->httpError(500, $e->getMessage());
                 }

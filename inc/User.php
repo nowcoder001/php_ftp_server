@@ -119,13 +119,7 @@ class User{
             'group' => $group,
             'description' => $description,
             'email' => $email,
-            'folder'=>array(
-                array('path'=>$home.'/www','access'=>'RWANDLCNDI')
-            ),
-            'ip'=>array(
-                'allow'=>array('0.0.0.0'),
-                'deny'=>array()
-            )
+            
         );
         return true;
     }

@@ -7,7 +7,6 @@
  * Time: 上午10:55:40
  */
 //请使用sudo php MyFtpServer.php 启动，swoole仅支持php_cli
-
 defined('DEBUG_ON') or define('DEBUG_ON', false);
 //主目录
 defined('BASE_PATH') or define('BASE_PATH', __DIR__);
