@@ -26,8 +26,8 @@
 >可以生成用户和密码,默认<br/> 
 >用户名：scjtqs<br/>
 >密码：123456 <br/> 
->默认FTP端口 21
->默认http管理端口8880
+>默认FTP端口 21<br/> 
+>默认http管理端口8880<br/> 
 >在命令行输入sudo php MyFtpServer.php<br/>  
 >即可开启ftp服务，可以配合supervisor使用。<br/>
 <html>
